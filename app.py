@@ -22,4 +22,4 @@ def get_laundry_data():
 
 
 if __name__ == '__main__':
-	app.run(debug=True, port=port)
+	app.run(debug=True, host='0.0.0.0', port=port)
