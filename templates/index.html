@@ -1,7 +1,47 @@
 <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
     <body>
-        IT WORKS!
-        
+        <div>
+            <form id="dorm-select">
+                <div class="form-group">
+                    <label for="dorm-list">Select Dorm:</label>
+                    <select class="form-control" name="dorm-name" id="dorm-list">
+                        <option>TOWERS</option>
+                        <option>BRACKENRIDGE</option>
+                        <option>HOLLAND</option>
+                        <option>LOTHROP</option>
+                        <option>MCCORMICK</option>
+                        <option>SUTH_EAST</option>
+                        <option>SUTH_WEST</option>
+                        <option>FORBES_CRAIG</option>
+                    </select>
+                    <button id="btn-submit" type="submit">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+        <div id="data-zone">
+            
+        </div>
     </body>
-
+    <script>
+        $(document).ready(function() {
+            $('#dorm-select').submit(function(e) {
+                e.preventDefault()
+                dorm = $(this).serialize()
+                console.log(dorm)
+                $('#data-zone').html('<img src="static/images/ring.gif"/>')
+                $.post('/get-raw-data', dorm, function(data) {
+                    $('#data-zone').empty()
+                    data.forEach(function(item, index) {
+                        $('#data-zone').append('<p>' + JSON.stringify(item) + '</p>')
+                    })
+                })
+            })
+        })
+    </script>
 </html>
