@@ -1,4 +1,15 @@
+/*
+body {
+    background-color: #E8E9F5;
+}
+*/
+
 img {
     width: 50px;
     height: 50px;
+}
+
+hr {
+    border-top-color: darkgray;
+    width: 98%;
 }
