@@ -12,11 +12,22 @@ $(document).ready(function() {
     
     function displayMachines(machines) {
         machines.forEach(function(item, index) {
-            machine = JSON.parse(JSON.stringify(item))
-            $('#data-zone').append('<div')
-            if (machine.machine_status.equals("Free")) {
-                $('#data-zone').append('<img src="../static/images/original.png"/>' + '<p>' + JSON.stringify(item) + '</p>')
+            machineJSON = JSON.stringify(item)
+            machine = JSON.parse(machineJSON)
+            $('#data-zone').append('<div>')
+            if (machine.machine_status == "Free" && machine.time_left == "0") {
+                $('#data-zone').append('<img src="../static/images/green_machine.png"/>' + '<p>' + machineJSON + '</p>')
             }
+            else if (machine.machine_status == "Free" && machine.time_left != "0") {
+                $('#data-zone').append('<img src="../static/images/white_machine.png"/>' + '<p>' + machineJSON + '</p>')
+            }
+            else if (machine.machine_status == "Out of service") {
+                $('#data-zone').append('<img src="../static/images/black_machine.png"/>' + '<p>' + machineJSON + '</p>')
+            }
+            else if (machine.machine_status == "In use") {
+                $('#data-zone').append('<img src="../static/images/red_machine.png"/>' + '<p>' + machineJSON + '</p>')
+            }
+            $('#data-zone').append('</div>')
             
         })
     }
