@@ -12,7 +12,7 @@ $(document).ready(function() {
     
     function displayMachines(machines) {
         machines.forEach(function(item, index) {
-            machine = JSON.parse(item)
+            machine = JSON.parse(JSON.stringify(item))
             $('#data-zone').append('<div')
             if (machine.machine_status.equals("Free")) {
                 $('#data-zone').append('<img src="../static/images/original.png"/>' + '<p>' + JSON.stringify(item) + '</p>')
