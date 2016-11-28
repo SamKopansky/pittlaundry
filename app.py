@@ -44,7 +44,7 @@ cron = Scheduler(daemon=True)
 # Explicitly kick off the background thread
 cron.start()
 
-@cron.interval_schedule(minutes=1)
+@cron.interval_schedule(hours=1)
 def print_stats():
 	print stats.print_stats()
 
