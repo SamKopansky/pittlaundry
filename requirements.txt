@@ -2,3 +2,4 @@ flask
 gunicorn
 BeautifulSoup
 apscheduler==2.1.2
+redis

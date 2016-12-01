@@ -42,6 +42,6 @@ def get_occupied_machines_count():
 	return occupied_machines_count
 
 
-def print_stats():
+def get_stats():
 	return get_occupied_machines_count()
 
