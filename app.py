@@ -47,7 +47,7 @@ cron = Scheduler(daemon=True)
 # Explicitly kick off the background thread
 cron.start()
 
-@cron.interval_schedule(minutes=1)
+@cron.interval_schedule(hours=1)
 def save_stats():
 	dorms = ['TOWERS', 'BRACKENRIDGE', 'HOLLAND', 'LOTHROP', 'MCCORMICK', 'SUTH_EAST', 'SUTH_WEST', 'FORBES_CRAIG']
 	occupied_machines = stats.get_stats()
