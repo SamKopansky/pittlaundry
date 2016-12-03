@@ -3,7 +3,7 @@ $(document).ready(function() {
         e.preventDefault()
         dorm = $(this).serialize()
         console.log(dorm)
-        $('#data-zone').html('<img src="static/images/ring.gif"/>')
+        $('#data-zone').html('<img id="loading-wheel" src="static/images/ring.gif"/>')
         $.post('/get-raw-data', dorm, function(data) {
             $('#data-zone').empty()
             displayMachines(data, dorm)

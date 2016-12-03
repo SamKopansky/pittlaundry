@@ -44,9 +44,7 @@ def get_laundry_data(dorm_name):
 
 
 cron = Scheduler(daemon=True)
-# Explicitly kick off the background thread
 cron.start()
-
 @cron.interval_schedule(hours=1)
 def save_stats():
 	dorms = ['TOWERS', 'BRACKENRIDGE', 'HOLLAND', 'LOTHROP', 'MCCORMICK', 'SUTH_EAST', 'SUTH_WEST', 'FORBES_CRAIG']
@@ -56,10 +54,10 @@ def save_stats():
 			r.rpushx(dorms[i], occupied_machines[i])
 		except:
 			pass
-
-
 # Shutdown cron thread if the web process is stopped
 atexit.register(lambda: cron.shutdown(wait=False))
+
+
 
 if __name__ == '__main__':
 	app.run(debug=True, host=host, port=port)
