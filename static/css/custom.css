@@ -55,7 +55,7 @@ ul {
     padding: 0;
 }
 
-.hidden {
-    visibility: hidden;
+.centered-title {
+    text-align: center;
 }
 
