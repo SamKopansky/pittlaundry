@@ -13,7 +13,7 @@ host = '0.0.0.0'
 port = int(os.environ.get('PORT', 33507))
 
 
-r = redis.from_url(os.environ.get('REDIS_URL'))
+# r = redis.from_url(os.environ.get('REDIS_URL'))
 
 
 @app.route('/')
@@ -43,19 +43,19 @@ def get_laundry_data(dorm_name):
 
 
 
-cron = Scheduler(daemon=True)
-cron.start()
-@cron.interval_schedule(hours=1)
-def save_stats():
-	dorms = ['TOWERS', 'BRACKENRIDGE', 'HOLLAND', 'LOTHROP', 'MCCORMICK', 'SUTH_EAST', 'SUTH_WEST', 'FORBES_CRAIG']
-	occupied_machines = stats.get_stats()
-	for i in range(8):
-		try:
-			r.rpushx(dorms[i], occupied_machines[i])
-		except:
-			pass
-# Shutdown cron thread if the web process is stopped
-atexit.register(lambda: cron.shutdown(wait=False))
+# cron = Scheduler(daemon=True)
+# cron.start()
+# @cron.interval_schedule(hours=1)
+# def save_stats():
+# 	dorms = ['TOWERS', 'BRACKENRIDGE', 'HOLLAND', 'LOTHROP', 'MCCORMICK', 'SUTH_EAST', 'SUTH_WEST', 'FORBES_CRAIG']
+# 	occupied_machines = stats.get_stats()
+# 	for i in range(8):
+# 		try:
+# 			r.rpushx(dorms[i], occupied_machines[i])
+# 		except:
+# 			pass
+# # Shutdown cron thread if the web process is stopped
+# atexit.register(lambda: cron.shutdown(wait=False))
 
 
 

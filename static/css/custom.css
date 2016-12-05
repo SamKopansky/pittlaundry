@@ -34,6 +34,20 @@ hr {
     border-radius: 0px;
 }
 
+#dorm-form {
+    text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+    #dorm-list {
+        width: 50%
+    }
+    select {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
 .row::after {
     content: "";
     clear: both;
@@ -56,6 +70,12 @@ ul {
 }
 
 .centered-title {
+    text-align: center;
+}
+
+.centered-machines {
+    display: block;
+    margin: 0 auto;
     text-align: center;
 }
 
